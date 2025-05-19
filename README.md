@@ -67,3 +67,9 @@ uvicorn app.main:app --reload
 **Start the Streamlit frontend dashboard:**
 
 streamlit run frontend/dashboard.py
+
+![image](https://github.com/user-attachments/assets/3c8d9b49-e4a7-46f4-8455-cc251c318ae2)
+
+![image](https://github.com/user-attachments/assets/f9405d84-a6d8-47a4-97aa-e7befa6d20e9)
+
+
