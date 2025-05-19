@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import logging
-import os
+from urllib.parse import urlparse
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -49,12 +49,29 @@ def extract_article(url):
 
         category = detect_category_keyword(text)
 
+        # Extract source domain
+        parsed_url = urlparse(url)
+        source = parsed_url.netloc
+
+        # Attempt to extract author (generic approach)
+        author = "unknown"
+        author_tag = soup.find('meta', attrs={"name": "author"})
+        if author_tag and author_tag.get("content"):
+            author = author_tag["content"]
+        else:
+            author_tag = soup.find('meta', attrs={"property": "article:author"})
+            if author_tag and author_tag.get("content"):
+                author = author_tag["content"]
+
         logger.info(f"Successfully extracted article from {url} with category '{category}'")
         return {
             "url": url,
             "title": title,
             "text": text,
-            "category": category
+            "category": category,
+            "source": source,
+            "author": author,
+            "frequency": 1  # Default frequency, to be updated later
         }
 
     except Exception as e:
