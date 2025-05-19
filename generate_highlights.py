@@ -13,7 +13,7 @@ from app.classifier.classifier import classify_article
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Replace this later with dynamic URL loading if needed
+# List of URLs to scrape
 urls = [
     # Technology
     "https://www.heraldsun.com.au/news/victoria/melbournes-new-cleaning-robots-will-use-ai-sophisticated-sensors-and-hitech-cameras/news-story/b53912b190bf9de64409d54a4aa92013",
@@ -89,7 +89,7 @@ def main():
 
     add_summary_to_articles(articles)
     add_source_to_articles(articles)
-    add_category_to_articles(articles)  # ✅ new step
+    add_category_to_articles(articles) 
 
     embeddings = generate_embeddings(articles)
 

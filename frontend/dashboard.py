@@ -10,7 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(page_title="News Dashboard + Chatbot", layout="wide")
 
 # ====== GroqCloud Setup ======
-GROQ_API_KEY = "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"  # 🔁 Replace with your actual Groq API key
+GROQ_API_KEY = "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" 
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama-3.1-8b-instant"
 
